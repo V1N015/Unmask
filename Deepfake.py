@@ -28,7 +28,6 @@ st.markdown(hide_st_style, unsafe_allow_html=True)
 
 #Menu Sidebar
 with st.sidebar:
-    st.logo("Assets/icon.png", size = "large")
     selected = option_menu(
         menu_title = None,
         options = ["Home", "Upload", "About"],
