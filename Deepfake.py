@@ -48,6 +48,7 @@ if selected == "Home":
             
 # Upload Page
 if selected == "Upload":
+    st.markdown("""<span style = "font-family: 'Roboto Mono', monospace; font-size:30px;">Upload Face Images for Detection</span>""", unsafe_allow_html=True)
     # Consent checkbox
     @st.dialog("Terms and Condition")
     def show_dialog():
