@@ -48,13 +48,38 @@ if selected == "Home":
             
 # Upload Page
 if selected == "Upload":
-    st.markdown("""<span style = "font-family: 'Roboto Mono', monospace; font-size:30px;">Upload Face Images for Detection</span>""", unsafe_allow_html=True)
-
     # Consent checkbox
-    consent = st.checkbox("I agree to the terms and conditions for processing my images.")
-    if not consent:
-        st.warning("You acknowledge and agree that any images you upload to the website are solely your responsibility.  The website owner and its affiliates assume no responsibility or liability whatsoever for the content of any uploaded images, including but not limited to their legality, accuracy, or appropriateness.")
-    else:
+    @st.dialog("Terms and Condition")
+    def show_dialog():
+        st.write('''Acceptance: By using Unmask, you agree to these Terms:
+                 
+1. Service: We analyze two uploaded images to detect deepfakes. Results are not guaranteed to be accurate.
+2. User Content: You are responsible for uploaded images. You confirm you have the right to upload them. Images are deleted after analysis.
+3. Usage: Do not misuse the website or upload illegal/harmful content. Do not attempt to create or distribute deepfakes.
+4. Disclaimer: We provide the service "as is." Accuracy is not guaranteed. We are not liable for any damages.
+5. Indemnity: You agree to protect us from any claims related to your use.''')
+        if st.button("I understand"):
+            st.session_state.show_dialog = False
+            st.session_state.dialog_closed = True
+            st.session_state.show_button = False
+            st.rerun()
+    
+    if "show_dialog" not in st.session_state:
+        st.session_state.show_dialog = False
+        
+    if "show_button" not in st.session_state:
+        st.session_state.show_button = True 
+        
+    if st.session_state.show_button:
+        st.warning("Agree to the Terms & Condition before uploading")
+        if st.button("Terms and Condition"):
+            st.session_state.show_dialog = True
+            st.session_state.dialog_closed = False
+            
+    if st.session_state.show_dialog:
+        show_dialog()
+        
+    elif "dialog_closed" in st.session_state and st.session_state.dialog_closed:
         
         col1, col2= st.columns(2, gap = "medium", vertical_alignment = "top")
         # Upload files only after consent
