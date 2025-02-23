@@ -123,7 +123,6 @@ if selected == "Upload":
                     st.warning("However, similar results can occur if the user uploads unedited but identical images of two people with similar backgrounds, lighting, angles, or poses.")
                 else:
                     st.info("Warning: Results are for informational purposes only and may not be reliable. Please use results with discretion")
-                    st.warning("However, similar results can occur if the user uploads authentic and identical images of the same person from the same angle, with the same background, but in a different pose.")
                     st.write("")
                     st.write("")
                     st.error('''Results suggest significant difference: 
