@@ -120,7 +120,7 @@ if selected == "Upload":
                 # Display results
                 st.write(f"Cosine Similarity Score: {percentage_score:.2f}%")
                 if percentage_score == 100:  # Adjust threshold as needed
-                    st.info("Warning: Results are for informational purposes only and may not be reliable. Please use results with discretion")
+                    st.info("Warning: While it aims to detect deepfake manipulation, the results may not always be conclusive.")
                     st.write("")
                     st.write("")
                     st.error('''Results suggest:
@@ -130,25 +130,25 @@ if selected == "Upload":
                              ''')
         
                 elif percentage_score >= 70 and similarity_score <=99 :  # Adjust threshold as needed
-                    st.info("Warning: Results are for informational purposes only and may not be reliable. Please use results with discretion")
+                    st.info("Warning: While it aims to detect deepfake manipulation, the results may not always be conclusive.")
                     st.write("")
                     st.write("")
-                    st.error('''Results suggest deepfake alterations: 
+                    st.error('''Results suggest deepfake alterations. it also suggests either of the following:
                              
                              - Identity remains the same with a different input image
     - Age or Facial expression has been modified.''')
                     st.warning("However, similar results can occur if the user uploads authentic and identical images of the same person from the same angle, with the same background, but in a different pose.")
                 elif percentage_score >= 55 and similarity_score <70 :
-                    st.info("Warning: Results are for informational purposes only and may not be reliable. Please use results with discretion")
+                    st.info("Warning: While it aims to detect deepfake manipulation, the results may not always be conclusive.")
                     st.write("")
                     st.write("")
-                    st.error('''Results suggest possible deepfake alteration: 
+                    st.error('''Results suggest possible deepfake alteration. It also suggests either of the following:
                              
                              - Identity remains the same, 
     - Differences may be due to lighting, background, or poses.''')
                     st.warning("However, similar results can occur if the user uploads unedited but identical images of two people with similar backgrounds, lighting, angles, or poses.")
                 else:
-                    st.info("Warning: Results are for informational purposes only and may not be reliable. Please use results with discretion")
+                    st.info("Warning: While it aims to detect deepfake manipulation, the results may not always be conclusive.")
                     st.write("")
                     st.write("")
                     st.error('''Results suggest significant difference: 
