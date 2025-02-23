@@ -1,4 +1,3 @@
-
 import streamlit as st 
 from streamlit_option_menu import option_menu
 from VGG import VGGNet
@@ -94,15 +93,44 @@ if selected == "Upload":
                 percentage_score = 100 * similarity_score
                 # Display results
                 st.write(f"Cosine Similarity Score: {percentage_score:.2f}%")
-                if percentage_score >= 90:  # Adjust threshold as needed
-                    st.error("Results suggest deepfake alterations: Identity remains the same, but age or facial expression has been modified")
-                    
-                elif percentage_score >= 70 and similarity_score <90 :  # Adjust threshold as needed
-                    st.error("Results suggest deepfake alterations: Identity remains the same with a different or non-original input image, but age or facial expression has been modified.")
-                elif percentage_score >= 55 and similarity_score <70 :  # Adjust threshold as needed
-                    st.error("Results suggest possible deepfake alteration: Identity remains the same, but differences may be due to lighting, background, or poses. ")
+                if percentage_score == 100:  # Adjust threshold as needed
+                    st.info("Warning: Results are for informational purposes only and may not be reliable. Please use results with discretion")
+                    st.write("")
+                    st.write("")
+                    st.error('''Results suggest:
+                             
+                             - Identity remains the same
+    - Both Input Images are the same 
+                             ''')
+        
+                elif percentage_score >= 70 and similarity_score <=99 :  # Adjust threshold as needed
+                    st.info("Warning: Results are for informational purposes only and may not be reliable. Please use results with discretion")
+                    st.write("")
+                    st.write("")
+                    st.error('''Results suggest deepfake alterations: 
+                             
+                             - Identity remains the same with a different input image
+    - Age or Facial expression has been modified.''')
+                    st.warning("However, similar results can occur if the user uploads authentic and identical images of the same person from the same angle, with the same background, but in a different pose.")
+                elif percentage_score >= 55 and similarity_score <70 :
+                    st.info("Warning: Results are for informational purposes only and may not be reliable. Please use results with discretion")
+                    st.write("")
+                    st.write("")
+                    st.error('''Results suggest possible deepfake alteration: 
+                             
+                             - Identity remains the same, 
+    - Differences may be due to lighting, background, or poses.''')
+                    st.warning("However, similar results can occur if the user uploads unedited but identical images of two people with similar backgrounds, lighting, angles, or poses.")
                 else:
-                    st.error("Results suggest heavy alterations: Identity is different, maybe due to face or gender swaps, extensive manipulations, or a completely different subject.")
+                    st.warning("However, similar results can occur if the user uploads authentic and identical images of the same person from the same angle, with the same background, but in a different pose.")
+                    st.write("")
+                    st.write("")
+                    st.error('''Results suggest significant difference: 
+                             
+                             - Identity is different 
+    - Face or gender swaps
+    - completely different subject.
+    - Extensive manipulations''')
 
 #About Page    
 if selected == "About":
