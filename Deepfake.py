@@ -42,7 +42,7 @@ if selected == "Home":
             st.markdown(""" 
                      <span style="font-size:50px; color: darkred; font-family: 'Roboto Mono', monospace;">Unmask</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size:50px; font-family: 'Roboto Mono', monospace;">the truth hidden within images</span>
                      """, unsafe_allow_html = True)
-            st.markdown("""<span style="font-size:20px; font-family: 'Roboto Mono', monospace;">Our analysis exposes the subtle signs of deepfake manipulation giving you the power to discern reality from illusion. Experience&nbsp;a new level of visual clarity with unmask.</span>""", unsafe_allow_html = True)
+            st.markdown("""<span style="font-size:20px; font-family: 'Roboto Mono', monospace;">Our system analyzes images to detect subtle signs of deepfake manipulation, helping you verify image authenticity. Explore a new level of image analysis with Unmask.</span>""", unsafe_allow_html = True)
         with col2:
             st.image("Assets/Sample-1.png", width = 1000)
             
@@ -50,15 +50,39 @@ if selected == "Home":
 if selected == "Upload":
     st.markdown("""<span style = "font-family: 'Roboto Mono', monospace; font-size:30px;">Upload Face Images for Detection</span>""", unsafe_allow_html=True)
     # Consent checkbox
-    @st.dialog("Terms and Condition")
+    @st.dialog("Terms and Condition", width = "large")
     def show_dialog():
-        st.write('''Acceptance: By using Unmask, you agree to these Terms:
-                 
-1. Service: We analyze two uploaded images to detect deepfakes. Results are not guaranteed to be accurate.
-2. User Content: You are responsible for uploaded images. You confirm you have the right to upload them. Images are deleted after analysis.
-3. Usage: Do not misuse the website or upload illegal/harmful content. Do not attempt to create or distribute deepfakes.
-4. Disclaimer: We provide the service "as is." Accuracy is not guaranteed. We are not liable for any damages.
-5. Indemnity: You agree to protect us from any claims related to your use.''')
+        def show_dialog():
+        st.markdown('''<span style = "font-size:15px; font-family: 'Roboto Mono', monospace;"><strong>1. Acceptance of Terms<strong></span>''',unsafe_allow_html=True)
+        st.markdown('''<span style = "font-size:14px; font-family: 'Roboto Mono', monospace;">By using our image analysis system ("Unmask"), you agree to these Terms and Conditions. If you do not agree with any part of these terms, you should not use this service.</span>''', unsafe_allow_html=True)
+        st.markdown('''<span style = "font-size:15px; font-family: 'Roboto Mono', monospace;"><strong>2. Purpose of the System<strong></span>''',unsafe_allow_html=True)
+        st.markdown('''<span style = "font-size:14px; font-family: 'Roboto Mono', monospace;">Unmask is designed for research and educational purposes to analyze images for potential deepfake alterations using cosine similarity. It does not provide absolute verification of image authenticity and should not be used as sole evidence in legal or forensic investigations.</span>''', unsafe_allow_html=True)
+        st.markdown('''<span style = "font-size:15px; font-family: 'Roboto Mono', monospace;"><strong>3. Purpose of the System<strong></span>''',unsafe_allow_html=True)
+        st.markdown('''<span style = "font-size:14px; font-family: 'Roboto Mono', monospace;">• You must be the rightful owner of the images uploaded or have legal authorization to use them.                  
+                    • You agree not to upload any images that contain explicit, illegal, or unauthorized content.                                                                               
+                    • You acknowledge that analysis results are based on algorithmic evaluations and may not always be accurate.</span>''', unsafe_allow_html=True)
+        st.markdown('''<span style = "font-size:15px; font-family: 'Roboto Mono', monospace;"><strong>4. Privacy and Data Handling<strong></span>''',unsafe_allow_html=True)
+        st.markdown('''<span style = "font-size:14px; font-family: 'Roboto Mono', monospace;">• Uploaded images are processed solely for analysis and are not stored permanently.                  
+                    • We do not share, sell, or distribute uploaded images to third parties                                                                               
+                    • Users should refrain from uploading personally identifiable or sensitive images unless necessary.</span>''', unsafe_allow_html=True)
+        st.markdown('''<span style = "font-size:15px; font-family: 'Roboto Mono', monospace;"><strong>5. Limitations of Liability<strong></span>''',unsafe_allow_html=True)
+        st.markdown('''<span style = "font-size:14px; font-family: 'Roboto Mono', monospace;">• The system provides similarity scores based on algorithmic detection but does not guarantee accuracy.                  
+                    • We are not responsible for any decisions made based on the results provided by this system.                                                                               
+                    • Users acknowledge that external factors such as image quality, lighting conditions, and compression artifacts may influence analysis results.</span>''', unsafe_allow_html=True)
+        st.markdown('''<span style = "font-size:15px; font-family: 'Roboto Mono', monospace;"><strong>6. Prohibited Use<strong></span>''',unsafe_allow_html=True)
+        st.markdown('''<span style = "font-size:14px; font-family: 'Roboto Mono', monospace;">Users may not:        
+                    • Use the system for unlawful, defamatory, or fraudulent purposes.                  
+                    • Attempt to manipulate or bypass the system’s intended functionality.                                                                               
+                    • Distribute or misuse analysis results for misleading or deceptive purposes.</span>''', unsafe_allow_html=True)
+        st.markdown('''<span style = "font-size:15px; font-family: 'Roboto Mono', monospace;"><strong>7. Intellectual Property<strong></span>''',unsafe_allow_html=True)
+        st.markdown('''<span style = "font-size:14px; font-family: 'Roboto Mono', monospace;">• The system and its underlying technology, including algorithms and data models, are the property of the developers.                  
+                    • Users are prohibited from reverse-engineering, copying, or redistributing any part of the system                                                                            </span>''', unsafe_allow_html=True)
+        st.markdown('''<span style = "font-size:15px; font-family: 'Roboto Mono', monospace;"><strong>8. Changes to Terms<strong></span>''',unsafe_allow_html=True)
+        st.markdown('''<span style = "font-size:14px; font-family: 'Roboto Mono', monospace;"> We reserve the right to modify these Terms and Conditions at any time. Continued use of the system after changes are made constitutes acceptance of the revised terms.</span>''', unsafe_allow_html=True)
+        st.markdown('''<span style = "font-size:15px; font-family: 'Roboto Mono', monospace;"><strong>9. Contact Information<strong></span>''',unsafe_allow_html=True)
+        st.markdown('''<span style = "font-size:14px; font-family: 'Roboto Mono', monospace;"> For inquiries or concerns regarding these terms, please contact us at unmaskproject@gmail.com.</span>''', unsafe_allow_html=True)
+        st.write("")
+        st.markdown('''<span style = "font-size:15px; font-family: 'Roboto Mono', monospace;"><strong>By using Unmask, you acknowledge and agree to these Terms and Conditions.<strong></span>''',unsafe_allow_html=True)
         if st.button("I understand"):
             st.session_state.show_dialog = False
             st.session_state.dialog_closed = True
@@ -81,9 +105,8 @@ if selected == "Upload":
         show_dialog()
         
     elif "dialog_closed" in st.session_state and st.session_state.dialog_closed:
-        
         col1, col2= st.columns(2, gap = "medium", vertical_alignment = "top")
-        # Upload files only after consent
+        
         
         with col1:
             deepfake_file = st.file_uploader("Upload alleged deepfake image", type=["jpg", "png"])
@@ -118,53 +141,80 @@ if selected == "Upload":
                 similarity_score = 1 - spatial.distance.cosine(deepfake_feat, ref_feat)
                 percentage_score = 100 * similarity_score
                 # Display results
-                st.write(f"Cosine Similarity Score: {percentage_score:.2f}%")
-                if percentage_score == 100:  # Adjust threshold as needed
-                    st.info("Warning: While it aims to detect deepfake manipulation, the results may not always be conclusive.")
+                st.markdown(f'''<span style = "font-size:15px; font-family: 'Roboto Mono', monospace;" >Cosine Similarity Score: {percentage_score:.2f}%</span>''', unsafe_allow_html=True)
+                
+                def display_threshold_progress(percentage_score):
+
+                    if percentage_score == 100:
+                        progress_value = 100
+                        value_color = "green"
+                    elif percentage_score >= 55 and percentage_score <=99:
+                        progress_value = int (percentage_score)
+                        value_color = "yellow"
+                    else:  # Less than 55
+                        progress_value = int (percentage_score)   
+                        value_color = "red"
+                    st.markdown(
+                    f"""
+                    <style>
+                         .stProgress > div > div > div > div {{
+                                background-color: {value_color} !important;
+                                }}
+                            </style>""",
+                        unsafe_allow_html=True,)
+                           
+                    st.progress(progress_value)
+                display_threshold_progress(percentage_score)
+                    
+                if percentage_score == 100:
                     st.write("")
-                    st.write("")
-                    st.error('''Results suggest:
+                    st.success('''This similarity score suggests that the uploaded images are identical with no detectable differences. This typically occurs when:
                              
-                             - Identity remains the same
-    - Both Input Images are the same 
+                             • The same image is uploaded twice.
+    • No deepfake alterations detected. 
                              ''')
+                    st.write("")
+                    st.info('''Disclaimer: 
+                            
+                            This system evaluates images using cosine similarity based on a predefined threshold but does not guarantee absolute detection accuracy. 
+    Similarity scores may be affected by factors such as camera angle, resolution, background variations, and image compression. Additional 
+    verification is recommended for conclusive analysis.''')
         
-                elif percentage_score >= 70 and similarity_score <=99 :  # Adjust threshold as needed
-                    st.info("Warning: While it aims to detect deepfake manipulation, the results may not always be conclusive.")
-                    st.write("")
-                    st.write("")
-                    st.error('''Results suggest deepfake alterations. it also suggests either of the following:
+                elif percentage_score >= 55 and percentage_score <=99 :  # Adjust threshold as needed
+                    st.warning('''This similarity score suggests that the images likely belong to the same individual, with strong matching facial features. However, some signs of manipulation may be present. Factors contributing to high similarity scores include:
+ 
                              
-                             - Identity remains the same with a different input image
-    - Age or Facial expression has been modified.''')
-                    st.warning("However, similar results can occur if the user uploads authentic and identical images of the same person from the same angle, with the same background, but in a different pose.")
-                elif percentage_score >= 55 and similarity_score <70 :
-                    st.info("Warning: While it aims to detect deepfake manipulation, the results may not always be conclusive.")
+                             • Images of the same person taken under similar conditions.
+    • Minor differences in lighting, angle, or facial expression.
+    • Subtle digital modifications that do not drastically alter facial features.
+    • Deepfake alteration detected: Possible modifications to facial expressions, aging effects, or slight synthetic enhancements. 
+      Further verification is recommended.''')
                     st.write("")
-                    st.write("")
-                    st.error('''Results suggest possible deepfake alteration. It also suggests either of the following:
-                             
-                             - Identity remains the same, 
-    - Differences may be due to lighting, background, or poses.''')
-                    st.warning("However, similar results can occur if the user uploads unedited but identical images of two people with similar backgrounds, lighting, angles, or poses.")
+                    st.info('''Disclaimer: 
+                            
+                            This system evaluates images using cosine similarity based on a predefined threshold but does not guarantee absolute detection accuracy. 
+    Similarity scores may be affected by factors such as camera angle, resolution, background variations, and image compression. Additional 
+    verification is recommended for conclusive analysis.''')
                 else:
-                    st.info("Warning: While it aims to detect deepfake manipulation, the results may not always be conclusive.")
-                    st.write("")
-                    st.write("")
-                    st.error('''Results suggest significant difference: 
+                    st.error('''This similarity score suggests that the images likely belong to different individuals, with minimal shared facial features. Factors that may result in a low similarity score include: 
                              
-                             - Identity is different 
-    - Face or gender swaps
-    - completely different subject.
-    - Extensive manipulations''')
+                             • Distinct individuals with no facial resemblance. 
+    • Significant changes in age, gender, or appearance.
+    • Poor image quality, extreme lighting differences, or occlusions affecting facial recognition.
+    • Deepfake detection not possible: Due to the lack of strong facial feature 
+      correlation, determining if manipulation has occurred is inconclusive.''')
+                    st.info('''Disclaimer: 
+                            
+                            This system evaluates images using cosine similarity based on a predefined threshold but does not guarantee absolute detection accuracy. 
+    Similarity scores may be affected by factors such as camera angle, resolution, background variations, and image compression. Additional 
+    verification is recommended for conclusive analysis.''')
 
 #About Page    
 if selected == "About":
         st.markdown("""<span style = "font-family: 'Roboto Mono', monospace; font-size:40px;">About the Project</span>""", unsafe_allow_html = True)
-        st.markdown("""<span style = "font-family: 'Roboto Mono', monospace; font-size:20px;">This project uses machine learning and cosine similarity to detect deepfake images.
-    We compare an uploaded image to a reference set of authentic images, and the cosine similarity score helps assess the similarity between them. 
-    If the similarity is below a certain threshold, the image is flagged as a deepfake.
-    The goal of this tool is to help users verify the authenticity of media and raise awareness about the dangers of manipulated content.</span>""", unsafe_allow_html = True)
-        st.markdown("""<span style = "font-family: 'Roboto Mono', monospace; font-size:20px;">This system is a research prototype and should be used for research purposes only. It is not intended to serve as sole evidence in legal or investigative processes. While it aims to detect deepfake manipulations, the results may not always be conclusive.
+        st.markdown("""<span style = "font-family: 'Roboto Mono', monospace; font-size:20px;">This system is designed to analyze images using cosine similarity to detect potential deepfake alterations. By comparing facial structures, it evaluates whether two images likely belong to the same individual and identifies possible manipulations such as age progression, expression changes, or synthetic modifications.</span>""", unsafe_allow_html = True)
+        st.markdown("""<span style = "font-family: 'Roboto Mono', monospace; font-size:20px;">Built with forensic applications in mind, this system provides a similarity score as an indicator of image authenticity. However, external factors such as resolution, lighting conditions, background variations, and compression artifacts can affect results. It does not guarantee absolute detection accuracy. 
+</span>""", unsafe_allow_html = True)
+        st.markdown("""<span style = "font-family: 'Roboto Mono', monospace; font-size:20px;">This project is part of an academic thesis and is intended for research and educational purposes only. It should not be used as sole evidence in forensic or legal investigations. Expert analysis and additional verification are recommended for conclusive assessment. 
 </span>""", unsafe_allow_html = True)
         
