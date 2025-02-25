@@ -49,39 +49,40 @@ if selected == "Home":
 # Upload Page
 if selected == "Upload":
     st.markdown("""<span style = "font-family: 'Roboto Mono', monospace; font-size:30px;">Upload Face Images for Detection</span>""", unsafe_allow_html=True)
+
     # Consent checkbox
-    @st.dialog("Terms and Condition", width = "large")
-        def show_dialog():
-            st.markdown('''<span style = "font-size:15px; font-family: 'Roboto Mono', monospace;"><strong>1. Acceptance of Terms<strong></span>''',unsafe_allow_html=True)
-            st.markdown('''<span style = "font-size:14px; font-family: 'Roboto Mono', monospace;">By using our image analysis system ("Unmask"), you agree to these Terms and Conditions. If you do not agree with any part of these terms, you should not use this service.</span>''', unsafe_allow_html=True)
-            st.markdown('''<span style = "font-size:15px; font-family: 'Roboto Mono', monospace;"><strong>2. Purpose of the System<strong></span>''',unsafe_allow_html=True)
-            st.markdown('''<span style = "font-size:14px; font-family: 'Roboto Mono', monospace;">Unmask is designed for research and educational purposes to analyze images for potential deepfake alterations using cosine similarity. It does not provide absolute verification of image authenticity and should not be used as sole evidence in legal or forensic investigations.</span>''', unsafe_allow_html=True)
-            st.markdown('''<span style = "font-size:15px; font-family: 'Roboto Mono', monospace;"><strong>3. Purpose of the System<strong></span>''',unsafe_allow_html=True)
-            st.markdown('''<span style = "font-size:14px; font-family: 'Roboto Mono', monospace;">• You must be the rightful owner of the images uploaded or have legal authorization to use them.                  
-                        • You agree not to upload any images that contain explicit, illegal, or unauthorized content.                                                                               
-                        • You acknowledge that analysis results are based on algorithmic evaluations and may not always be accurate.</span>''', unsafe_allow_html=True)
-            st.markdown('''<span style = "font-size:15px; font-family: 'Roboto Mono', monospace;"><strong>4. Privacy and Data Handling<strong></span>''',unsafe_allow_html=True)
-            st.markdown('''<span style = "font-size:14px; font-family: 'Roboto Mono', monospace;">• Uploaded images are processed solely for analysis and are not stored permanently.                  
-                        • We do not share, sell, or distribute uploaded images to third parties                                                                               
-                        • Users should refrain from uploading personally identifiable or sensitive images unless necessary.</span>''', unsafe_allow_html=True)
-            st.markdown('''<span style = "font-size:15px; font-family: 'Roboto Mono', monospace;"><strong>5. Limitations of Liability<strong></span>''',unsafe_allow_html=True)
-            st.markdown('''<span style = "font-size:14px; font-family: 'Roboto Mono', monospace;">• The system provides similarity scores based on algorithmic detection but does not guarantee accuracy.                  
-                        • We are not responsible for any decisions made based on the results provided by this system.                                                                               
-                        • Users acknowledge that external factors such as image quality, lighting conditions, and compression artifacts may influence analysis results.</span>''', unsafe_allow_html=True)
-            st.markdown('''<span style = "font-size:15px; font-family: 'Roboto Mono', monospace;"><strong>6. Prohibited Use<strong></span>''',unsafe_allow_html=True)
-            st.markdown('''<span style = "font-size:14px; font-family: 'Roboto Mono', monospace;">Users may not:        
-                        • Use the system for unlawful, defamatory, or fraudulent purposes.                  
-                        • Attempt to manipulate or bypass the system’s intended functionality.                                                                               
-                        • Distribute or misuse analysis results for misleading or deceptive purposes.</span>''', unsafe_allow_html=True)
-            st.markdown('''<span style = "font-size:15px; font-family: 'Roboto Mono', monospace;"><strong>7. Intellectual Property<strong></span>''',unsafe_allow_html=True)
-            st.markdown('''<span style = "font-size:14px; font-family: 'Roboto Mono', monospace;">• The system and its underlying technology, including algorithms and data models, are the property of the developers.                  
-                        • Users are prohibited from reverse-engineering, copying, or redistributing any part of the system                                                                            </span>''', unsafe_allow_html=True)
-            st.markdown('''<span style = "font-size:15px; font-family: 'Roboto Mono', monospace;"><strong>8. Changes to Terms<strong></span>''',unsafe_allow_html=True)
-            st.markdown('''<span style = "font-size:14px; font-family: 'Roboto Mono', monospace;"> We reserve the right to modify these Terms and Conditions at any time. Continued use of the system after changes are made constitutes acceptance of the revised terms.</span>''', unsafe_allow_html=True)
-            st.markdown('''<span style = "font-size:15px; font-family: 'Roboto Mono', monospace;"><strong>9. Contact Information<strong></span>''',unsafe_allow_html=True)
-            st.markdown('''<span style = "font-size:14px; font-family: 'Roboto Mono', monospace;"> For inquiries or concerns regarding these terms, please contact us at unmaskproject@gmail.com.</span>''', unsafe_allow_html=True)
-            st.write("")
-            st.markdown('''<span style = "font-size:15px; font-family: 'Roboto Mono', monospace;"><strong>By using Unmask, you acknowledge and agree to these Terms and Conditions.<strong></span>''',unsafe_allow_html=True)
+    @st.dialog("Terms and Condition", width="large")
+    def show_dialog():
+        st.markdown('''<span style = "font-size:15px; font-family: 'Roboto Mono', monospace;"><strong>1. Acceptance of Terms<strong></span>''',unsafe_allow_html=True)
+        st.markdown('''<span style = "font-size:14px; font-family: 'Roboto Mono', monospace;">By using our image analysis system ("Unmask"), you agree to these Terms and Conditions. If you do not agree with any part of these terms, you should not use this service.</span>''', unsafe_allow_html=True)
+        st.markdown('''<span style = "font-size:15px; font-family: 'Roboto Mono', monospace;"><strong>2. Purpose of the System<strong></span>''',unsafe_allow_html=True)
+        st.markdown('''<span style = "font-size:14px; font-family: 'Roboto Mono', monospace;">Unmask is designed for research and educational purposes to analyze images for potential deepfake alterations using cosine similarity. It does not provide absolute verification of image authenticity and should not be used as sole evidence in legal or forensic investigations.</span>''', unsafe_allow_html=True)
+        st.markdown('''<span style = "font-size:15px; font-family: 'Roboto Mono', monospace;"><strong>3. Purpose of the System<strong></span>''',unsafe_allow_html=True)
+        st.markdown('''<span style = "font-size:14px; font-family: 'Roboto Mono', monospace;">• You must be the rightful owner of the images uploaded or have legal authorization to use them.                  
+                    • You agree not to upload any images that contain explicit, illegal, or unauthorized content.                                                                               
+                    • You acknowledge that analysis results are based on algorithmic evaluations and may not always be accurate.</span>''', unsafe_allow_html=True)
+        st.markdown('''<span style = "font-size:15px; font-family: 'Roboto Mono', monospace;"><strong>4. Privacy and Data Handling<strong></span>''',unsafe_allow_html=True)
+        st.markdown('''<span style = "font-size:14px; font-family: 'Roboto Mono', monospace;">• Uploaded images are processed solely for analysis and are not stored permanently.                  
+                    • We do not share, sell, or distribute uploaded images to third parties                                                                               
+                    • Users should refrain from uploading personally identifiable or sensitive images unless necessary.</span>''', unsafe_allow_html=True)
+        st.markdown('''<span style = "font-size:15px; font-family: 'Roboto Mono', monospace;"><strong>5. Limitations of Liability<strong></span>''',unsafe_allow_html=True)
+        st.markdown('''<span style = "font-size:14px; font-family: 'Roboto Mono', monospace;">• The system provides similarity scores based on algorithmic detection but does not guarantee accuracy.                  
+                    • We are not responsible for any decisions made based on the results provided by this system.                                                                               
+                    • Users acknowledge that external factors such as image quality, lighting conditions, and compression artifacts may influence analysis results.</span>''', unsafe_allow_html=True)
+        st.markdown('''<span style = "font-size:15px; font-family: 'Roboto Mono', monospace;"><strong>6. Prohibited Use<strong></span>''',unsafe_allow_html=True)
+        st.markdown('''<span style = "font-size:14px; font-family: 'Roboto Mono', monospace;">Users may not:        
+                    • Use the system for unlawful, defamatory, or fraudulent purposes.                  
+                    • Attempt to manipulate or bypass the system’s intended functionality.                                                                               
+                    • Distribute or misuse analysis results for misleading or deceptive purposes.</span>''', unsafe_allow_html=True)
+        st.markdown('''<span style = "font-size:15px; font-family: 'Roboto Mono', monospace;"><strong>7. Intellectual Property<strong></span>''',unsafe_allow_html=True)
+        st.markdown('''<span style = "font-size:14px; font-family: 'Roboto Mono', monospace;">• The system and its underlying technology, including algorithms and data models, are the property of the developers.                  
+                    • Users are prohibited from reverse-engineering, copying, or redistributing any part of the system                                                                            </span>''', unsafe_allow_html=True)
+        st.markdown('''<span style = "font-size:15px; font-family: 'Roboto Mono', monospace;"><strong>8. Changes to Terms<strong></span>''',unsafe_allow_html=True)
+        st.markdown('''<span style = "font-size:14px; font-family: 'Roboto Mono', monospace;"> We reserve the right to modify these Terms and Conditions at any time. Continued use of the system after changes are made constitutes acceptance of the revised terms.</span>''', unsafe_allow_html=True)
+        st.markdown('''<span style = "font-size:15px; font-family: 'Roboto Mono', monospace;"><strong>9. Contact Information<strong></span>''',unsafe_allow_html=True)
+        st.markdown('''<span style = "font-size:14px; font-family: 'Roboto Mono', monospace;"> For inquiries or concerns regarding these terms, please contact us at unmaskproject@gmail.com.</span>''', unsafe_allow_html=True)
+        st.write("")
+        st.markdown('''<span style = "font-size:15px; font-family: 'Roboto Mono', monospace;"><strong>By using Unmask, you acknowledge and agree to these Terms and Conditions.<strong></span>''',unsafe_allow_html=True)
         if st.button("I understand"):
             st.session_state.show_dialog = False
             st.session_state.dialog_closed = True
