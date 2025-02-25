@@ -51,7 +51,6 @@ if selected == "Upload":
     st.markdown("""<span style = "font-family: 'Roboto Mono', monospace; font-size:30px;">Upload Face Images for Detection</span>""", unsafe_allow_html=True)
     # Consent checkbox
     @st.dialog("Terms and Condition", width = "large")
-    def show_dialog():
         def show_dialog():
             st.markdown('''<span style = "font-size:15px; font-family: 'Roboto Mono', monospace;"><strong>1. Acceptance of Terms<strong></span>''',unsafe_allow_html=True)
             st.markdown('''<span style = "font-size:14px; font-family: 'Roboto Mono', monospace;">By using our image analysis system ("Unmask"), you agree to these Terms and Conditions. If you do not agree with any part of these terms, you should not use this service.</span>''', unsafe_allow_html=True)
