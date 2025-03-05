@@ -6,6 +6,7 @@ import tempfile
 import os
 from scipy import spatial
 import numpy as np
+from st_circular_progress import CircularProgress
 
 
 #Page configuration
@@ -27,7 +28,7 @@ st.markdown(hide_st_style, unsafe_allow_html=True)
 
 #Menu Sidebar
 with st.sidebar:
-    st.logo("Assets/icon.png", size = "large")
+    st.logo("Assets/icon.png", size = "medium", icon_image=None)
     selected = option_menu(
         menu_title = None,
         options = ["Home", "Upload", "About"],
@@ -45,7 +46,43 @@ if selected == "Home":
             st.markdown("""<span style="font-size:20px; font-family: 'Roboto Mono', monospace;">Our system analyzes images to detect subtle signs of deepfake manipulation, helping you verify image authenticity. Explore a new level of image analysis with Unmask.</span>""", unsafe_allow_html = True)
         with col2:
             st.image("Assets/Sample-1.png", width = 1000)
+    
+        st.write("")
+        st.write("")   
+        st.markdown("""---""")
+        st.markdown(""" 
+                     <div style ="text-align: center;"><span style="font-size:30px; font-family: 'Roboto Mono', monospace;">Seeing Isn't Believing Anymore</span></div>
+                     """, unsafe_allow_html = True)
+        st.markdown(""" 
+                     <div style ="text-align: center;"><span style="font-size:25px; font-family: 'Roboto Mono', monospace;">Discover how</span>&nbsp;&nbsp;&nbsp;<span style="font-size:25px; color: darkred; font-family: 'Roboto Mono', monospace;">Deepfakes</span>&nbsp;&nbsp;&nbsp<span style="font-size:25px; font-family: 'Roboto Mono', monospace;">can trick you and what you can do to protect yourself.</span></div>
+                     """, unsafe_allow_html = True)
+        st.write("")
+        st.write("")
+        st.video("Assets/Deepfake Awareness Video.mp4", start_time=15)
+        st.write("")
+        st.write("")
+    
+        
+        st.markdown("""---""")
+        col3, col4 = st.columns(2, gap = "large", vertical_alignment= "center")
+        with col3:
+            st.markdown("""<span style="font-size:19px; font-family: 'Roboto Mono', monospace;">Deepfakes are AI-generated that convincingly alter or fabricate a person's appearance, posing a serious threat to trust and truth. In today's digital landscape, where information spreads rapidly, deepfakes can be used to spread misinformation, manipulate public opinion, and even damage reputations. </span>""", unsafe_allow_html = True)
             
+            st.markdown("""<span style="font-size:19px; font-family: 'Roboto Mono', monospace;">This tutorial will guide you through using our deepfake detection tool called Unmask to verify the authenticity of your Image.</span>""", unsafe_allow_html = True)
+        with col4:
+            st.markdown(""" 
+                     <div style ="text-align: center;"><span style="font-size:30px; font-family: 'Roboto Mono', monospace;">(Tagalog Tutorial)</span></div>
+                     """, unsafe_allow_html = True)
+            st.video("Assets/Video demo.mp4", start_time=56)
+            
+            
+        st.write("")
+        st.write("")
+        st.write("")
+        st.write("")
+        st.markdown(""" 
+                     <div style ="text-align: center;"><span style="font-size:10px; font-family: 'Roboto Mono', monospace;">This system is part of an academic thesis and is intended for research and educational purposes only</span></div>
+                     """, unsafe_allow_html = True)
 # Upload Page
 if selected == "Upload":
     st.markdown("""<span style = "font-family: 'Roboto Mono', monospace; font-size:30px;">Upload Face Images for Detection</span>""", unsafe_allow_html=True)
@@ -140,74 +177,77 @@ if selected == "Upload":
                 # Calculate cosine similarity
                 similarity_score = 1 - spatial.distance.cosine(deepfake_feat, ref_feat)
                 percentage_score = 100 * similarity_score
-                # Display results
-                st.markdown(f'''<span style = "font-size:15px; font-family: 'Roboto Mono', monospace;" >Cosine Similarity Score: {percentage_score:.2f}%</span>''', unsafe_allow_html=True)
                 
-                def display_threshold_progress(percentage_score):
-
-                    if percentage_score == 100:
-                        progress_value = 100
-                        value_color = "green"
-                    elif percentage_score >= 55 and percentage_score <=99:
-                        progress_value = int (percentage_score)
-                        value_color = "yellow"
-                    else:  # Less than 55
-                        progress_value = int (percentage_score)   
-                        value_color = "red"
+                col3, col4= st.columns([0.2, 0.9], vertical_alignment = "center", border=False)
+                
+                with col3:
                     st.markdown(
-                    f"""
-                    <style>
-                         .stProgress > div > div > div > div {{
-                                background-color: {value_color} !important;
-                                }}
-                            </style>""",
-                        unsafe_allow_html=True,)
-                           
-                    st.progress(progress_value)
-                display_threshold_progress(percentage_score)
-                    
-                if percentage_score == 100:
-                    st.write("")
-                    st.success('''This similarity score suggests that the uploaded images are identical with no detectable differences. This typically occurs when:
-                             
-                             • The same image is uploaded twice.
-    • No deepfake alterations detected. 
-                             ''')
-                    st.write("")
-                    st.info('''Disclaimer: 
+                        """
+                        <style>
+                        [data-testid="stColumn"]:nth-child(1) {
+                            min-height: 100px; /* Set a minimum height */
+                        }
+                        </style>
+                        """,
+                        unsafe_allow_html=True,
+                    )
+                    def display_threshold_progress(percentage_score):
+
+                        if percentage_score == 100:
+                                progress_value = 100
+                                value_color = "green"
+                        elif percentage_score >= 55 and percentage_score <=99:
+                                progress_value = int (percentage_score)
+                                value_color = "yellow"
+                        else:  # Less than 55
+                                progress_value = int (percentage_score)   
+                                value_color = "red"
+                        
+                        circular_percent = CircularProgress(
+                                label="Cosine Similarity Score:",
+                                value=progress_value,
+                                key="circular_percent",
+                                color=value_color,
+                                size="large",
+                                track_color = "gray")
+                        circular_percent.update_value(progress_value)
+                        circular_percent.st_circular_progress()
                             
-                            This system evaluates images using cosine similarity based on a predefined threshold but does not guarantee absolute detection accuracy. 
-    Similarity scores may be affected by factors such as camera angle, resolution, background variations, and image compression. Additional 
-    verification is recommended for conclusive analysis.''')
-        
-                elif percentage_score >= 55 and percentage_score <=99 :  # Adjust threshold as needed
-                    st.warning('''This similarity score suggests that the images likely belong to the same individual, with strong matching facial features. However, some signs of manipulation may be present. Factors contributing to high similarity scores include:
- 
-                             
-                             • Images of the same person taken under similar conditions.
+                    display_threshold_progress(percentage_score)
+                with col4:
+                    if percentage_score == 100:
+                        st.success('''This similarity score suggests that the uploaded images are identical with no detectable differences. This typically occurs when:
+                                
+                                • The same image is uploaded twice.
+    • No deepfake alterations detected. 
+                                ''')
+                        st.write("")
+            
+                    elif percentage_score >= 55 and percentage_score <=99 :  # Adjust threshold as needed
+                        st.warning('''This similarity score suggests that the images likely belong to the same individual, with strong matching facial features. However, some signs of manipulation may be present. Factors contributing to high similarity scores include:
+    
+                                
+                                • Images of the same person taken under similar conditions.
     • Minor differences in lighting, angle, or facial expression.
     • Subtle digital modifications that do not drastically alter facial features.
     • Deepfake alteration detected: Possible modifications to facial expressions, aging effects, or slight synthetic enhancements. 
-      Further verification is recommended.''')
-                    st.write("")
-                    st.info('''Disclaimer: 
-                            
-                            This system evaluates images using cosine similarity based on a predefined threshold but does not guarantee absolute detection accuracy. 
-    Similarity scores may be affected by factors such as camera angle, resolution, background variations, and image compression. Additional 
-    verification is recommended for conclusive analysis.''')
-                else:
-                    st.error('''This similarity score suggests that the images likely belong to different individuals, with minimal shared facial features. Factors that may result in a low similarity score include: 
-                             
-                             • Distinct individuals with no facial resemblance. 
+        Further verification is recommended.''')
+    
+                    else:
+                        st.error('''This similarity score suggests that the images likely belong to different individuals, with minimal shared facial features. Factors that may result in a low similarity score include: 
+                                
+                                • Distinct individuals with no facial resemblance. 
     • Significant changes in age, gender, or appearance.
     • Poor image quality, extreme lighting differences, or occlusions affecting facial recognition.
     • Deepfake detection not possible: Due to the lack of strong facial feature 
-      correlation, determining if manipulation has occurred is inconclusive.''')
-                    st.info('''Disclaimer: 
-                            
-                            This system evaluates images using cosine similarity based on a predefined threshold but does not guarantee absolute detection accuracy. 
+        correlation, determining if manipulation has occurred is inconclusive.''')
+                    
+            st.info('''Disclaimer: 
+                                
+                                This system evaluates images using cosine similarity based on a predefined threshold but does not guarantee absolute detection accuracy. 
     Similarity scores may be affected by factors such as camera angle, resolution, background variations, and image compression. Additional 
     verification is recommended for conclusive analysis.''')
+                    
 
 #About Page    
 if selected == "About":
@@ -217,4 +257,6 @@ if selected == "About":
 </span>""", unsafe_allow_html = True)
         st.markdown("""<span style = "font-family: 'Roboto Mono', monospace; font-size:20px;">This project is part of an academic thesis and is intended for research and educational purposes only. It should not be used as sole evidence in forensic or legal investigations. Expert analysis and additional verification are recommended for conclusive assessment. 
 </span>""", unsafe_allow_html = True)
+        
+
         
